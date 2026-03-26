@@ -7,3 +7,4 @@ gpg --list-secret-keys --keyid-format=long #helps to get the private key
 gpg --armor --export-secret-keys #Helps to export the private key
 gpg --armor --export luisvillarrealp125@gmail.com > mi_llave_publica.asc #export my public key 
 gpg --import jony_llave_publica.asc #import the public key of my friend
+echo "Pero si nos pintamos el pelo" > msj_my_friend.txt #create a file to save the message to my friend
