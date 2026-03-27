@@ -10,3 +10,4 @@ gpg --import jony_llave_publica.asc #import the public key of my friend
 echo "Pero si nos pintamos el pelo" > msj_my_friend.txt #create a file to save the message to my friend
 gpg --output doc_cifrado.txt --encrypt --recipient jonathanmullo100@gmail.com msj_my_friend.txt #encrypt my friend's message
 gpg --decrypt jony_doc_cifrado.txt #decrypt my friend's hidden message
+gpg --clearsign msj_my_friend.txt #puts a signature in the message
