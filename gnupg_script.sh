@@ -14,3 +14,4 @@ gpg --clearsign msj_my_friend.txt #puts a signature in the message
 gpg --verify msj_my_friend.txt.asc #verify that the signature is correct 
 gpg --sign msj_my_friend.txt #creates a binary signature
 gpg --verify msj_my_friend.txt.gpg #verify that the binary signature is correct
+gpg --detach-sign msj_my_friend.txt #create a separate signature without modifying the original file
