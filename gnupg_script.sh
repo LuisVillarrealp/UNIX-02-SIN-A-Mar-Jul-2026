@@ -20,3 +20,5 @@ gpg --edit-key jonathanmullo100@gmail.com → trust → 4 #assign a level of tru
 gpg --sign-key jonathanmullo100@gmail.com #sign our friend's public key
 gpg --verify msj_my_friend.txt.asc #verify that the file has not been modified
 gpg --verify msj_my_friend.txt.sig msj_my_friend.txt #verify that the file has a separate signature
+gpg --output doc_final.gpg --encrypt --sign --recipient jonathanmullo100@gmail.com msj_my_friend.txt 
+    #Create and encrypt the file with the signature and message only for the recipient.
