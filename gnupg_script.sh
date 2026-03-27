@@ -12,3 +12,4 @@ gpg --output doc_cifrado.txt --encrypt --recipient jonathanmullo100@gmail.com ms
 gpg --decrypt jony_doc_cifrado.txt #decrypt my friend's hidden message
 gpg --clearsign msj_my_friend.txt #puts a signature in the message
 gpg --verify msj_my_friend.txt.asc #verify that the signature is correct 
+gpg --sign msj_my_friend.txt #creates a binary signature
