@@ -21,7 +21,7 @@ gpg --sign-key jonathanmullo100@gmail.com #sign our friend's public key
 gpg --verify msj_my_friend.txt.asc #verify that the file has not been modified
 gpg --verify msj_my_friend.txt.sig msj_my_friend.txt #verify that the file has a separate signature
 gpg --output doc_final.gpg --encrypt --sign --recipient jonathanmullo100@gmail.com msj_my_friend.txt 
-    #Create and encrypt the file with the signature and message only for the recipient.
+#Create and encrypt the file with the signature and message only for the recipient.
 gpg --decrypt jony_doc_final.gpg #decrypt our friend's file
 gpg --output mensaje_descifrado.txt --decrypt jony_doc_final.gpg 
 #decrypt and verify your friend's file and save the message in a new file to be able to use cat
