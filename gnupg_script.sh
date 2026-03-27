@@ -22,3 +22,4 @@ gpg --verify msj_my_friend.txt.asc #verify that the file has not been modified
 gpg --verify msj_my_friend.txt.sig msj_my_friend.txt #verify that the file has a separate signature
 gpg --output doc_final.gpg --encrypt --sign --recipient jonathanmullo100@gmail.com msj_my_friend.txt 
     #Create and encrypt the file with the signature and message only for the recipient.
+gpg --decrypt jony_doc_final.gpg #decrypt our friend's file
