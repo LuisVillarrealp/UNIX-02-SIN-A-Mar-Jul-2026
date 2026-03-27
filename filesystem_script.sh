@@ -4,3 +4,7 @@ cd /dev
 ls
 #show the last execute commands
 history
+#change directory to /proc directory
+cd /proc
+#watch the content in the file cpuinfo
+cat cpuinfo
