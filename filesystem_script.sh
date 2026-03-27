@@ -18,3 +18,7 @@ cd /etc
 cd gss/
 #Print working directory, shows the current directory
 pwd
+#change directory to root directory
+cd /
+#adds a symbol to each filename to indicate whether it is a folder, an executable, or a shortcut.
+ls -F
