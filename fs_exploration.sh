@@ -28,3 +28,9 @@ echo -e "\n---\n"
 /sys/firmware/efi
 #means “or” it runs the next command only if the previous one fails.
 ||
+#Creates a file named test.txt and writes mi archivo inside.
+echo "mi archivo" > test.txt
+#Displays the contents of test.txt in the terminal.
+cat test.txt
+#Shows detailed information about test.txt, including: Size, Permissions, Owner and group, Timestamps
+stat test.txt
