@@ -43,3 +43,13 @@ total 8
 # 1572874 = inode; d = directory; rwxrwxrwx+ = permissions; 5 = links; 
 #codespace root = owner & group; 4096 = size; Apr 9 12:19 = last modified; .. = parent directory
 1572874 drwxrwxrwx+ 5 codespace root      4096 Apr  9 12:19 ..
+#shows detailed information about the current directory
+stat .
+# Device: 7,4 = identifies the physical or virtual device where the file is stored
+# 7 = major number → indicates the type of device/driver (e.g., disk type)
+# 4 = minor number → identifies the specific device or partition within that type
+Device: 7,4
+#unique identifier of the file/directory
+Inode: 1572967 
+#number of hard links (references to this directory)
+Links: 2
