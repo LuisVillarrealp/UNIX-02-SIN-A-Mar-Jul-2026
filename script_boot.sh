@@ -22,3 +22,15 @@ echo $BASH
 echo $PATH
 # changes to the home directory using the HOME variable
 cd $HOME
+#lists files with detailed info (-l), including hidden files (-a), and shows inode numbers (-i)
+ls -lai
+# the same as -lai, but with options written separately
+ls -l -a -i
+#opens the manual page for the ls command
+man ls
+#lists all files in long format, including hidden files
+ls --all
+#refers to the current (actual) directory
+.
+#refers to the previous (parent) directory
+..
