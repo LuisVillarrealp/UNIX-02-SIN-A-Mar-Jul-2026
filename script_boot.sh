@@ -53,3 +53,11 @@ Device: 7,4
 Inode: 1572967 
 #number of hard links (references to this directory)
 Links: 2
+#shows the current user
+whoami
+#lists files in long format sorted by modification time (newest first)
+ls -lt
+#lists files in /etc directory and shows the first 20 results
+ls /etc | head -20
+## ists files in /dev directory and shows the last 20 results
+ls /dev | tail -20
