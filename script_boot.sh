@@ -34,3 +34,12 @@ ls --all
 .
 #refers to the previous (parent) directory
 ..
+#total disk blocks used by the directory
+total 8
+# 1572967 = inode; d = directory; rwxrwxrwx+ = permissions
+#r = read, w = write, x = execute,it divides in : user / group / other,+ aditional permissions
+#; 2 = links;codespace codespace = owner & group; 4096 = size; Apr 9 12:19 = last modified; . = current directory
+1572967 drwxrwxrwx+ 2 codespace codespace 4096 Apr  9 12:19 .
+# 1572874 = inode; d = directory; rwxrwxrwx+ = permissions; 5 = links; 
+#codespace root = owner & group; 4096 = size; Apr 9 12:19 = last modified; .. = parent directory
+1572874 drwxrwxrwx+ 5 codespace root      4096 Apr  9 12:19 ..
