@@ -10,5 +10,13 @@ git clone --depth 1 https://github.com/torvalds/linux.git
 cd linux
 # Opens the kernel configuration menu interface
 make menuconfig
-#Compile the kernel and adjust -j to the number of available cores):
+#Compile the kernel and adjust -j to the number of available cores
 make -j 2
+# Creates a directory named /boot-files with root privileges
+sudo mkdir /boot-files
+# Copies the compiled kernel image to /boot-files directory
+sudo cp arch/x86/boot/bzImage /boot-files/
+# Moves to the parent directory
+cd ..
+# Clones the BusyBox repository 
+git clone --depth 1 https://git.busybox.net/busybox
