@@ -36,3 +36,13 @@ cd /boot-files/initramfs
 # "#!/bin/sh"
 # "/bin/sh"
 sudo vi init
+# Removes the file "linuxrc"
+sudo rm linuxrc
+# Gives execute permission to the "init" file
+sudo chmod +x init
+# Switches to root user (superuser)
+sudo su
+# Creates an initramfs archive (init.cpio) from the current directory
+find . | cpio -o -H newc > ../init.cpio
+# Moves to the parent directory
+cd ..
