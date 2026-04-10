@@ -10,3 +10,5 @@ git clone --depth 1 https://github.com/torvalds/linux.git
 cd linux
 # Opens the kernel configuration menu interface
 make menuconfig
+#Compile the kernel and adjust -j to the number of available cores):
+make -j 2
