@@ -45,4 +45,18 @@ sudo su
 # Creates an initramfs archive (init.cpio) from the current directory
 find . | cpio -o -H newc > ../init.cpio
 # Moves to the parent directory
-cd ..
+sudo su
+# Creates a 50MB empty file named "boot"
+dd if=/dev/zero of=boot bs=1M count=50
+# Formats the file "boot" with FAT filesystem
+mkfs -t fat boot
+# Installs Syslinux bootloader on the "boot" file
+syslinux boot
+# Creates a directory named "m"
+mkdir m
+# Mounts the "boot" file into directory "m"
+mount boot m
+# Copies kernel (bzImage) and initramfs (init.cpio) into "m"
+cp bzImage init.cpio m
+# Unmounts the directory "m"
+umount m
