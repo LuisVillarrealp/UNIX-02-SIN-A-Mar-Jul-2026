@@ -20,3 +20,19 @@ sudo cp arch/x86/boot/bzImage /boot-files/
 cd ..
 # Clones the BusyBox repository 
 git clone --depth 1 https://git.busybox.net/busybox
+# Changes to the busybox directory
+cd busybox
+# Opens the BusyBox configuration menu (allows selecting features and build options before compiling)
+make menuconfig
+# Compiles the source code using 2 parallel jobs (faster build)
+make -j 2
+# Creates the initramfs directory inside /boot-files
+sudo mkdir /boot-files/initramfs
+# Installs BusyBox files into the specified directory
+sudo make CONFIG_PREFIX=/boot-files/initramfs install
+# Changes to the initramfs directory
+cd /boot-files/initramfs
+# Opens (or creates) the file "init" using vi editor and we putin there 
+# "#!/bin/sh"
+# "/bin/sh"
+sudo vi init
