@@ -62,3 +62,47 @@ cp bzImage init.cpio m
 umount m
 # Runs a virtual machine using QEMU with no graphical output, sets console to ttyS0, uses bzImage as kernel, init.cpio as initramfs, and boot file as disk image
 qemu-system-x86_64 -nographic -append "console=ttyS0" -kernel bzImage -initrd init.cpio -drive file=boot,format=raw
+
+#Kernel Panic Solution
+# Changes working directory to /boot-files/initramfs where the initramfs content is located
+cd /boot-files/initramfs
+# Removes linuxrc file created by BusyBox since we use our own init script (-f avoids errors if it doesn't exist)
+rm -f linuxrc
+# Grants execution permissions to init, required since it's the first program the kernel runs
+chmod +x init
+# Packages all initramfs content into a cpio archive in newc format, which is what the kernel expects
+find . | cpio -o -H newc > /boot-files/init.cpio
+# Lists cpio contents and filters lines containing 'init' to verify it was included correctly
+cpio -it < /boot-files/init.cpio | grep init
+# Returns to initramfs directory to continue working after verifying cpio content
+cd /boot-files/initramfs
+# Regenerates the initramfs archive from scratch with the correct BusyBox content
+find . | cpio -o -H newc > /boot-files/init.cpio
+# Counts how many files the initramfs contains (300+ means BusyBox is correctly included)
+cpio -it < /boot-files/init.cpio | wc -l
+# Lists initramfs directory to visually confirm bin/, sbin/, usr/ folders exist
+ls /boot-files/initramfs/
+# Searches for the compiled BusyBox binary in the workspace
+ls /workspaces/*/busybox/busybox 2>/dev/null || find /workspaces -name 'busybox' -type f 2>/dev/null
+# Navigates to the BusyBox source directory inside the project folder to run make commands
+cd /workspaces/UNIX-02-SIN-A-Mar-Jul-2026/proyecto/busybox
+# Installs BusyBox into the initramfs directory, creating bin/, sbin/, usr/ with all Unix command symlinks
+make CONFIG_PREFIX=/boot-files/initramfs install
+# Disables CONFIG_TC option which causes compilation errors in recent kernel versions
+sed -i 's/CONFIG_TC=y/CONFIG_TC=n/' .config
+# Compiles BusyBox using 2 CPU cores in parallel, generating the executable with all Unix utilities
+make -j2
+# Reinstalls BusyBox correctly into the initramfs after fixing the CONFIG_TC compilation error
+make CONFIG_PREFIX=/boot-files/initramfs install
+# Verifies BusyBox installation was successful by checking bin/, sbin/, usr/ and init exist
+ls /boot-files/initramfs/
+# Changes to initramfs directory to prepare the final initramfs packaging
+cd /boot-files/initramfs
+# Removes linuxrc again after BusyBox install so the kernel uses our custom init script instead
+rm -f linuxrc
+# Generates the final initramfs with all correct content: init script and all BusyBox binaries
+find . | cpio -o -H newc > /boot-files/init.cpio
+# Returns to the main working directory where bzImage, init.cpio and boot are located
+cd /boot-files
+# Boots the virtual machine with no graphical output, passes kernel and initramfs directly, mounts boot disk image
+qemu-system-x86_64 -nographic -append "console=ttyS0" -kernel bzImage -initrd init.cpio -drive file=boot,format=raw
