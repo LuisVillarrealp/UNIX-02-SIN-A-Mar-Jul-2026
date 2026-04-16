@@ -20,13 +20,15 @@ man
     #Create a shallow clone with a history truncated to the specified number of commits. Implies --single-branch unless
     #--no-single-branch is given to fetch the histories near the tips of all branches. If you want to clone submodules shallowly, also
     #pass --shallow-submodules.
-#Creates an empty file named script.sh
+#creates an empty file named script.sh
 touch script.sh
-#Gives execute permission to all users
+#gives execute permission to all users
 chmod +x script.sh
-#Gives execute permission only to the user (owner)
+#gives execute permission only to the user (owner)
 chmod u+x script.sh
-#Removes read permission from others
+#removes read permission from others
 chmod o-r secreto.txt 
-#Gives read and write to user, removes all permissions from group and others
+#gives read and write to user, removes all permissions from group and others
 chmod u+rw,go-rwx privado
+#lists files in long format we use it to verify the change of permissions
+ls -l
