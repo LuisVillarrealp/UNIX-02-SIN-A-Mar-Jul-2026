@@ -32,3 +32,15 @@ chmod o-r secreto.txt
 chmod u+rw,go-rwx privado
 #lists files in long format we use it to verify the change of permissions
 ls -l
+# attempts to write "hola" to a protected file (fails because redirection is not run with sudo)
+sudo echo "hola" > /etc/archivo_protegido
+# writes "hola" to a protected file using sudo correctly (tee runs with root privileges)
+echo "hola" | sudo tee /etc/archivo_protegido > /dev/null
+# lists files in the /etc directory
+ls /etc
+# displays the content of the file /etc/archivo_protegido
+cat /etc/archivo_protegido
+#writes input to a file and also shows it on the screen.
+tee
+# Sends "hola" through a pipe to tee, which writes it to a protected file with sudo
+echo "hola" | sudo tee /etc/archivo_protegido
