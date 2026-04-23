@@ -56,3 +56,7 @@ exit
 sudo su
 #switches to the root user shell with a login environment
 sudo su -
+#prints the value of the HOME environment variable (user's home directory)
+echo "$HOME"
+#prints the literal string $HOME without expanding the variable
+echo '$HOME'
