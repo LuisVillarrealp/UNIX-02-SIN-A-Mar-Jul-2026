@@ -60,3 +60,19 @@ sudo su -
 echo "$HOME"
 #prints the literal string $HOME without expanding the variable
 echo '$HOME'
+#creates a script file hola.sh with a shebang indicating it should run with /bin/sh
+echo '#!/bin/sh' > hola.sh
+#appends a line to the script that prints a message
+echo 'echo "Hola desde mi primer script"' >> hola.sh
+#displays the contents of the script file
+cat hola.sh
+#executes the script file (requires execute permission)
+./hola.sh
+#shows detailed information and permissions of the file hola.sh
+ls -l hola.sh
+#adds execute permission to the file hola.sh
+chmod +x hola.sh
+#we check that the file hola.sh has change the permissions
+ls -l hola.sh
+#runs the script hola.sh
+./hola.sh
