@@ -48,3 +48,11 @@ echo "hola" | sudo tee /etc/archivo_protegido
 sudo sh -c 'echo "chao" >> /etc/archivo_protegido'
 #shows the content of the protected file
 cat /etc/archivo_protegido
+#opens a root shell with superuser privileges
+sudo -i
+#exits the root shell and returns to the previous user session
+exit
+#switches to the root user shell using sudo
+sudo su
+#switches to the root user shell with a login environment
+sudo su -
