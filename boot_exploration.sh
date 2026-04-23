@@ -86,3 +86,13 @@ mkdir ~/mi_carpeta
 #installs the cowsay package, which requires system-wide changes so it needs root privileges
 apt install cowsay
 sudo apt install cowsay
+#creates an empty file named prueba.txt
+touch prueba.txt
+#sets permissions so only the owner can read(4) and write(2) the file
+chmod 600 prueba.txt
+#shows the file permissions in detailed format
+ls -l prueba.txt
+#changes permissions to allow owner full access(4+2+1=7) and others read and execute access(4+1=5)
+chmod 755 prueba.txt
+#shows the updated file permissions in detailed format
+ls -l prueba.txt
