@@ -76,3 +76,13 @@ chmod +x hola.sh
 ls -l hola.sh
 #runs the script hola.sh
 ./hola.sh
+#lists the contents of the /etc directory, which contains system configuration files
+ls /etc
+#tries to create a file in /etc without permissions, then repeats the command with sudo to gain root privileges because /etc is a protected system directory
+touch /etc/prueba.txt
+sudo touch /etc/prueba.txt
+#creates a new directory in the user's home folder, where no special permissions are needed
+mkdir ~/mi_carpeta
+#installs the cowsay package, which requires system-wide changes so it needs root privileges
+apt install cowsay
+sudo apt install cowsay
