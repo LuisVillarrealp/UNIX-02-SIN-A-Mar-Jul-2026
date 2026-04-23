@@ -44,3 +44,7 @@ cat /etc/archivo_protegido
 tee
 # Sends "hola" through a pipe to tee, which writes it to a protected file with sudo
 echo "hola" | sudo tee /etc/archivo_protegido
+#writes "chao" in a protected file usign superuser privileges
+sudo sh -c 'echo "chao" >> /etc/archivo_protegido'
+#shows the content of the protected file
+cat /etc/archivo_protegido
