@@ -20,8 +20,19 @@
    40  git add .
    41  git commit -m "Fix problema 4: permisos simbolicos corregidos"
 
-   ls -l evaluation/kepler/runner.sh
+   43ls -l evaluation/kepler/runner.sh
    44  chmod u+s evaluation/kepler/runner.sh
    45  ls -l evaluation/kepler/runner.sh
    46  git add .
    47  git commit -m "Fix problema 5: SUID activado en runner.sh"
+
+49  ls -ld /tmp/kepler_zone
+   50  mkdir /tmp/kepler_zone
+   51  chmod +t /tmp/kepler_zone
+   52  ls -ld /tmp/kepler_zone
+   53  chmod o+x /tmp/kepler_zone
+   54  ls -ld /tmp/kepler_zone
+   55  git add .
+   56  git commit -m "Fix problema 6: sticky bit en /tmp/kepler_zone"
+
+   
