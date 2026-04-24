@@ -15,4 +15,7 @@
    34  chmod 640 evaluation/kepler/registros/sensores.log
    35  git add .
    36  git commit -m "Fix problema 3: permisos numericos 640 en sensores.log"
-   37  history
+    38  chmod u+x evaluation/kepler/runner.sh
+   39  chmod o-w evaluation/kepler/ajustes.conf
+   40  git add .
+   41  git commit -m "Fix problema 4: permisos simbolicos corregidos"
