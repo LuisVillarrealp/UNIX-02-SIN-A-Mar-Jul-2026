@@ -19,3 +19,9 @@
    39  chmod o-w evaluation/kepler/ajustes.conf
    40  git add .
    41  git commit -m "Fix problema 4: permisos simbolicos corregidos"
+
+   ls -l evaluation/kepler/runner.sh
+   44  chmod u+s evaluation/kepler/runner.sh
+   45  ls -l evaluation/kepler/runner.sh
+   46  git add .
+   47  git commit -m "Fix problema 5: SUID activado en runner.sh"
