@@ -21,3 +21,21 @@ aptitude -vvv moo # even more verbosity
 -v verbosity
 # prints the current working directory.
 pwd
+# changes to the home directory (default behavior when no argument is given).
+cd
+# changes to the "Documents" directory using a relative path.
+cd Documents
+# changes to the root directory using an absolute path.
+cd /
+# changes to the home directory using an absolute path.
+cd /home/sysadmin
+# prints the current working directory (absolute path).
+pwd
+# changes to a nested directory using a relative path.
+cd School/Art
+# moves to the parent directory (one level up).
+cd ..
+# refers to the current directory (no change in location).
+cd .
+# returns to the home directory using a shortcut.
+cd ~
