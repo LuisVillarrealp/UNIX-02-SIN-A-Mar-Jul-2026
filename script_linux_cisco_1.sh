@@ -19,3 +19,5 @@ aptitude -vv moo # more verbosity
 aptitude -vvv moo # even more verbosity
 # enables verbose mode, showing more detailed output.
 -v verbosity
+# prints the current working directory.
+pwd
