@@ -39,3 +39,13 @@ cd ..
 cd .
 # returns to the home directory using a shortcut.
 cd ~
+# lists files in /var/log with detailed information (long format).
+ls -l /var/log/
+# lists files in /var/log sorted by modification time (most recent first).
+ls -lt /var/log
+# lists files in /var/log sorted by file size (largest first).
+ls -l -S /var/log ls -lS /var/log 
+# lists files in /var/log sorted by size in reverse order (smallest first).
+ls -lSr /var/log
+# lists files in /var/log in reverse alphabetical order.
+ls -r /var/log
