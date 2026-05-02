@@ -69,3 +69,19 @@ sudo sl
 cd ~/Documents
 # lists detailed information of hello.sh including permissions.
 ls -l hello.sh
+# shows help or requires arguments to change file permissions.
+chmod
+# syntax reference for symbolic mode.
+# chmod [<PERMISSION_SET><ACTION><PERMISSIONS>]... FILE
+# changes to the Documents directory using home shortcut.
+cd ~/Documents
+# lists detailed information of hello.sh including permissions.
+ls -l hello.sh
+# tries to execute the script from the current directory.
+./hello.sh
+# adds execute permission to the file for the user (owner).
+chmod u+x hello.sh
+# lists updated permissions of hello.sh.
+ls -l hello.sh
+# executes the script successfully after adding permissions.
+./hello.sh
