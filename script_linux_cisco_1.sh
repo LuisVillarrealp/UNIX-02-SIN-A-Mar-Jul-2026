@@ -49,3 +49,19 @@ ls -l -S /var/log ls -lS /var/log
 ls -lSr /var/log
 # lists files in /var/log in reverse alphabetical order.
 ls -r /var/log
+# switches to the root user without loading the full login environment.
+su
+# switches to the root user with a login shell.
+su -
+# switches to the root user using login option (same as su -).
+su -l
+# switches to the root user using full login option (same as su -).
+su --login
+# exits the current shell and returns to the previous user.
+exit
+# runs the sl command (requires administrative privileges).
+sl
+# allows running commands with administrative (root) privileges.
+sudo
+# runs the sl command with root privileges using sudo.
+sudo sl
