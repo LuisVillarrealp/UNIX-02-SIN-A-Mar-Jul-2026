@@ -85,3 +85,19 @@ chmod u+x hello.sh
 ls -l hello.sh
 # executes the script successfully after adding permissions.
 ./hello.sh
+# shows help or requires arguments to change file ownership.
+chown
+# syntax reference for chown.
+# chown [OPTIONS] [OWNER] FILE
+# changes to the Documents directory.
+cd ~/Documents
+# lists files with detailed information including owner.
+ls -l
+# changes the owner of hello.sh to root using administrative privileges.
+sudo chown root hello.sh
+# lists detailed information of hello.sh to verify new owner.
+ls -l hello.sh
+# tries to execute the script (will fail due to permissions).
+./hello.sh
+# executes the script with root privileges.
+sudo ./hello.sh
