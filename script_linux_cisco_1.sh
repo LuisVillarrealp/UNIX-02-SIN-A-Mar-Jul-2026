@@ -65,3 +65,7 @@ sl
 sudo
 # runs the sl command with root privileges using sudo.
 sudo sl
+# changes to the Documents directory using a relative path with home shortcut.
+cd ~/Documents
+# lists detailed information of hello.sh including permissions.
+ls -l hello.sh
