@@ -101,3 +101,35 @@ ls -l hello.sh
 ./hello.sh
 # executes the script with root privileges.
 sudo ./hello.sh
+# displays the content of a file.
+cat
+# syntax reference for cat (not an executable command).
+# cat [OPTIONS] [FILE]
+# changes to the Documents directory.
+cd ~/Documents
+# displays the content of animals.txt.
+cat animals.txt
+# displays file content page by page.
+more
+# displays file content page by page with more control.
+less
+# displays the first lines of a file.
+head
+# syntax reference for head (not an executable command).
+# head [OPTIONS] [FILE]
+# displays the last lines of a file.
+tail
+# syntax reference for tail (not an executable command).
+# tail [OPTIONS] [FILE]
+# displays full content of alpha.txt.
+cat alpha.txt
+# displays first 10 lines of alpha.txt.
+head alpha.txt
+# displays last 10 lines of alpha.txt.
+tail alpha.txt
+# syntax reference for specifying number of lines (not executable).
+# head -n number_of_lines file
+# displays first 5 lines of alpha.txt.
+head -n 5 alpha.txt
+# displays last 5 lines of alpha.txt.
+tail -n 5 alpha.txt
