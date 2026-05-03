@@ -103,7 +103,7 @@ ls -l hello.sh
 sudo ./hello.sh
 # displays the content of a file.
 cat
-# syntax reference for cat (not an executable command).
+# syntax reference for cat.
 # cat [OPTIONS] [FILE]
 # changes to the Documents directory.
 cd ~/Documents
@@ -115,11 +115,11 @@ more
 less
 # displays the first lines of a file.
 head
-# syntax reference for head (not an executable command).
+# syntax reference for head.
 # head [OPTIONS] [FILE]
 # displays the last lines of a file.
 tail
-# syntax reference for tail (not an executable command).
+# syntax reference for tail.
 # tail [OPTIONS] [FILE]
 # displays full content of alpha.txt.
 cat alpha.txt
@@ -127,9 +127,17 @@ cat alpha.txt
 head alpha.txt
 # displays last 10 lines of alpha.txt.
 tail alpha.txt
-# syntax reference for specifying number of lines (not executable).
+# syntax reference for specifying number of lines.
 # head -n number_of_lines file
 # displays first 5 lines of alpha.txt.
 head -n 5 alpha.txt
 # displays last 5 lines of alpha.txt.
 tail -n 5 alpha.txt
+# copies files from source to destination.
+cp
+# syntax reference for cp.
+# cp [OPTIONS] SOURCE DESTINATION
+# copies /etc/passwd to the current directory using relative path (.)
+cp /etc/passwd .
+# lists files to verify the copy.
+ls
