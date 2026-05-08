@@ -188,7 +188,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 # Por defecto Docker usa /bin/sh (un shell más limitado y antiguo). Lo
 # cambiamos a bash por si agregamos más instrucciones con sintaxis
 # moderna (arrays, [[ ]], etc.).
-SHELL ["/bin/bash", "-c"]
+SHELL ["/bin/zsh", "-c"]
 
 
 # ----------------------------------------------------------------------------
@@ -218,22 +218,20 @@ RUN git config --system --add safe.directory '*' \
 # propia terminal integrada de VS Code, pero es buena práctica dejarla
 # definida para que la imagen sea usable también con Docker puro.
 # Prompt del curso para bash
-RUN cat >> /root/.bashrc <<'EOF'
+RUN cat >> /root/.zshrc <<'EOF'
 
 # ===== Prompt del curso =====
-__set_prompt() {
+precmd() {
     local ec=$?
-    local mark
+    echo "DEBUG ec=$ec"
     if [ $ec -eq 0 ]; then
-        mark='\[\e[32m\]✓\[\e[0m\]'
+        PS1="%F{cyan}[Luis-Villarreal🐺]%f %F{yellow}%1~%f %F{green}✓%f %# "
     else
-        mark="\[\e[31m\]✗ $ec\[\e[0m\]"
+        PS1="%F{cyan}[Luis-Villarreal🐺]%f %F{yellow}%1~%f %F{red}✗ $ec%f %# "
     fi
-    PS1="\[\e[36m\][Luis-Villarreal🐺]\[\e[0m\] \[\e[33m\]\W\[\e[0m\] $mark \$ "
 }
-PROMPT_COMMAND=__set_prompt
 EOF
-CMD ["/bin/bash"]
+CMD ["/bin/zsh"]
 
 
 
