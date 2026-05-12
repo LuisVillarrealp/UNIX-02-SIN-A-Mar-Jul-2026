@@ -47,3 +47,9 @@ cat /etc/group
 touch comun
 # displays detailed information about the file comun.
 ls -l comun
+# adds user luna to the group grupo_test without removing other group memberships.
+usermod -a -G grupo_test luna
+# changes the group ownership of the file comun to grupo_test.
+chgrp grupo_test comun
+# displays detailed information about comun including updated group ownership.
+ls -l comun
