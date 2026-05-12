@@ -35,3 +35,15 @@ ls -l mi_archivo
 useradd -m -s /usr/bin/zsh luna
 # changes the owner of mi_archivo to user luna.
 chown luna mi_archivo
+# displays the groups of the current user.
+groups
+# creates a new group named grupo_test.
+groupadd grupo_test
+# shows that the new group may not immediately appear in the current session.
+groups
+# displays all system groups from the /etc/group file.
+cat /etc/group
+# creates an empty file named comun.
+touch comun
+# displays detailed information about the file comun.
+ls -l comun
