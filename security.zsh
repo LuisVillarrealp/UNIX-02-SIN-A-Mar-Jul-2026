@@ -25,3 +25,13 @@ touch secreto.txt
 mkdir privado
 # lists files and directories with detailed information.
 ls -l
+# sets default file permission mask allowing read access for others.
+umask 022
+# creates a file named mi_archivo and writes "Hola" into it.
+echo "Hola" > mi_archivo
+# displays detailed information about mi_archivo.
+ls -l mi_archivo
+# creates a new user named luna with home directory and zsh shell.
+useradd -m -s /usr/bin/zsh luna
+# changes the owner of mi_archivo to user luna.
+chown luna mi_archivo
