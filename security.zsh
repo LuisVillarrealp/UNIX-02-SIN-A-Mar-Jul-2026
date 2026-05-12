@@ -57,3 +57,11 @@ ls -l comun
 sudo chown luna:grupo_test mi_archivo
 # displays detailed information about mi_archivo including updated owner and group.
 ls -l mi_archivo
+# creates a directory named proyecto and a subdirectory named sub.
+mkdir -p proyecto/sub
+# creates two empty files: readme in proyecto and datos in proyecto/sub.
+touch proyecto/readme proyecto/sub/datos
+# changes owner and group recursively for all files and directories inside proyecto.
+sudo chown -R luna:grupo_test proyecto
+# displays detailed information of all files and directories inside proyecto recursively.
+ls -lR proyecto
