@@ -53,3 +53,7 @@ usermod -a -G grupo_test luna
 chgrp grupo_test comun
 # displays detailed information about comun including updated group ownership.
 ls -l comun
+# changes the owner of mi_archivo to user luna and the group to grupo_test.
+sudo chown luna:grupo_test mi_archivo
+# displays detailed information about mi_archivo including updated owner and group.
+ls -l mi_archivo
