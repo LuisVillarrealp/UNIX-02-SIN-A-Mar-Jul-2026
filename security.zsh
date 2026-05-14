@@ -77,3 +77,21 @@ id -u
 id -g
 #All groups IDs
 id -G
+#displays lines containing the word "root" from the /etc/group file.
+cat /etc/group | grep root
+# creates a directory named proyecto_unix inside the home directory.
+mkdir ~/proyecto_unix/
+# lists all files in proyecto_unix including hidden files with detailed information.
+ls -la ~/proyecto_unix/
+# creates a new group named desarrolladores.
+groupadd desarrolladores
+# creates a new group named operaciones with GID 2000.
+groupadd -g 2000 operaciones
+# creates a system group named servicios_web.
+groupadd --system servicios_web
+# searches for specific groups in the /etc/group file using grep with escaped pipe characters.
+grep "desarrolladores\|operaciones\|servicios_web" /etc/group
+# searches for specific groups in the /etc/group file using extended regular expressions.
+grep -E "desarrolladores|operaciones|servicios_web" /etc/group
+# displays GID minimum, maximum and system GID settings from the /etc/login.defs file.
+grep "GID_MIN\|GID_MAX\|SYS_GID" /etc/login.defs
