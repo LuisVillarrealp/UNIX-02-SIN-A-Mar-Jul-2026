@@ -70,3 +70,10 @@ ls -lR proyecto
 id
 #view all users in the system, filtering the first 10 results
 cat /etc/passwd | head -10
+#View the UID and GID of the actual user
+#User ID
+id -u
+#Primary Group ID
+id -g
+#All groups IDs
+id -G
