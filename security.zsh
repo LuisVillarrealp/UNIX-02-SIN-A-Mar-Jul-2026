@@ -103,3 +103,20 @@ addgroup --gid 2100 marketing
 addgroup --system cache_web
 # to verify diseno, marketing and cache_web in the /etc/group file.
 grep "diseno\|marketing\|cache_web" /etc/group
+# displays the groups of the current user.
+groups
+# displays user and group information including UID and GID.
+id
+# adds the root user to the desarrolladores group.
+usermod -aG desarrolladores root
+# adds the root user to the diseno group.
+usermod -aG diseno root
+# creates a new group named grupo_temporal.
+groupadd grupo_temporal
+# adds the root user to the grupo_temporal group.
+usermod -aG grupo_temporal root
+# displays user and group information for the root user.
+id root
+# sets desarrolladores as the only secondary group for the root user. because if we do not use -a it eliminates the other groups 
+usermod -G desarrolladores root
+id root
