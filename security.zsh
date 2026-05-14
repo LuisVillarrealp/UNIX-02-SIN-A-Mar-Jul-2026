@@ -95,3 +95,11 @@ grep "desarrolladores\|operaciones\|servicios_web" /etc/group
 grep -E "desarrolladores|operaciones|servicios_web" /etc/group
 # displays GID minimum, maximum and system GID settings from the /etc/login.defs file.
 grep "GID_MIN\|GID_MAX\|SYS_GID" /etc/login.defs
+# creates a new group named diseno.
+addgroup diseno
+# creates a new group named marketing with GID 2100.
+addgroup --gid 2100 marketing
+# creates a system group named cache_web.
+addgroup --system cache_web
+# to verify diseno, marketing and cache_web in the /etc/group file.
+grep "diseno\|marketing\|cache_web" /etc/group
