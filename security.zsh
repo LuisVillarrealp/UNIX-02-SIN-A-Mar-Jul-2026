@@ -65,3 +65,8 @@ touch proyecto/readme proyecto/sub/datos
 sudo chown -R luna:grupo_test proyecto
 # displays detailed information of all files and directories inside proyecto recursively.
 ls -lR proyecto
+#view the current user ID
+#user ID and primary group, secondary group
+id
+#view all users in the system, filtering the first 10 results
+cat /etc/passwd | head -10
