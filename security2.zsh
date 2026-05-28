@@ -12,6 +12,8 @@ echo "Grupo actual:$(id -gn)"
 #Create a file before the newgrp
 touch ~/antes_de_newgrp.txt
 ls -la ~/antes_de_newgrp.txt
+#Download newgrp
+sudo apt install uidmap util-linux-extra
 #Create the group 'desarrolladores'
 groupadd desarrolladores
 #Change the group 'desarrolladores'
