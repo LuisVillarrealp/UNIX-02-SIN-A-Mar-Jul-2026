@@ -37,3 +37,10 @@ rm Work
 rm -r Work
 # checks if the Work directory still exists.
 ls Work
+#grep command
+# changes to the Documents directory inside the home folder.
+cd ~/Documents
+# copies the /etc/passwd file to the current directory.
+cp /etc/passwd .
+# searches for lines containing "sysadmin" inside the passwd file.
+grep sysadmin passwd
