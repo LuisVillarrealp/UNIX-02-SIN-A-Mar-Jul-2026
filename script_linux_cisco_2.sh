@@ -24,3 +24,16 @@ ls
 mv animals.txt zoo.txt
 # lists files in the current directory to confirm the rename.
 ls
+#rm command
+# changes to the Documents directory inside the home folder.
+cd ~/Documents
+# removes the file linux.txt permanently.
+rm linux.txt
+# checks if linux.txt still exists.
+ls linux.txt
+# tries to remove the Work directory without recursive option. (which gives an error)
+rm Work
+# removes the Work directory and all its contents recursively.
+rm -r Work
+# checks if the Work directory still exists.
+ls Work
