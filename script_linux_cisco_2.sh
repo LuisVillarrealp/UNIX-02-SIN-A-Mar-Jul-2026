@@ -44,3 +44,11 @@ cd ~/Documents
 cp /etc/passwd .
 # searches for lines containing "sysadmin" inside the passwd file.
 grep sysadmin passwd
+# Section 14.1: Regular Expressions
+# Basic Regex characters summary:
+# .   : Matches any single character.
+# [ ] : Matches any specified character inside the brackets.
+# [^] : Matches any character NOT specified inside the brackets.
+# *   : Matches zero or more of the previous character.
+# ^   : Matches the beginning of the line.
+# $   : Matches the end of the line.
