@@ -7,7 +7,8 @@ cd ~
 dd if=/dev/zero of=/tmp/swapex bs=1M count=50
 # clones one disk to another (dangerous command).
 # dd if=/dev/sda of=/dev/sdb
-#mv command
+
+# mv command and rm Commands
 # changes to the Documents directory inside the home folder.
 cd ~/Documents
 # moves the file people.csv to the Work directory.
@@ -24,6 +25,7 @@ ls
 mv animals.txt zoo.txt
 # lists files in the current directory to confirm the rename.
 ls
+
 #rm command
 # changes to the Documents directory inside the home folder.
 cd ~/Documents
@@ -37,6 +39,7 @@ rm Work
 rm -r Work
 # checks if the Work directory still exists.
 ls Work
+
 #grep command
 # changes to the Documents directory inside the home folder.
 cd ~/Documents
@@ -96,6 +99,8 @@ grep 'e*' red.txt
 grep 'ee*' red.txt
 # searches for the word "red" from standard input.
 #grep 'red'
+
+#Shutdown and System Date
 # changes back to the home directory.
 cd ~
 # switches to the root user with a login shell.
@@ -108,7 +113,8 @@ date
 shutdown 01:51
 # schedules a system shutdown in 1 minute with a custom message.
 shutdown +1 "Goodbye World!"
-#ifconfig command
+
+# ifconfig command
 # Display network interface configuration.
 ifconfig
 # Verify connectivity with a successful ping test.
@@ -117,6 +123,7 @@ ping -c 4 192.168.1.2
 ping -c 4 192.168.1.3
 # Exit the root user session.
 exit
+
 #ps commands
 # displays processes running in the current shell session.
 ps
@@ -124,7 +131,8 @@ ps
 ps -e
 # displays all running processes with full detailed information.
 ps -ef
-#apt/ apt-get command
+
+#apt / apt-get command
 # updates the package list from configured repositories.
 sudo apt-get update
 # searches for packages related to the word "cow".
@@ -143,6 +151,7 @@ sudo apt-get upgrade
 # apt-get purge [package]
 # removes the cowsay package and its configuration files.
 sudo apt-get purge cowsay
+
 #passwd command
 # changes the password of the current user.
 passwd
@@ -154,6 +163,7 @@ su root
 passwd sysadmin
 # exits the current root session.
 exit
+
 #Redirection
 # changes to the Documents directory inside the home folder.
 cd ~/Documents
@@ -175,7 +185,8 @@ cat newfile1.txt
 echo "This food is good." >> newfile1.txt
 # displays the final content of newfile1.txt.
 cat newfile1.txt
-#Text Editor (vi/vim) ---
+
+#Text Editor (vi/vim) 
 # Open a file for editing using the vi editor.
 vi newfile.txt
 # Note on vi modes 
@@ -183,6 +194,11 @@ vi newfile.txt
 # To return to Command mode, press 'Esc'.
 # To enter Ex mode, press ':'.
 # Force quit the editor without saving changes.
-# :q!
+:q!
 # Save and quit the editor.
 # :wq
+
+# --- FINAL SUMMARY: WHAT I LEARNED ---
+# I learned essential Linux commands for file management, permissions, and networking.
+# These skills build the foundation for Cybersecurity (Cisco CyberOps Associate).
+# To advance my IT career, the next steps are LPI Linux Essentials and LPIC-1 certifications.
