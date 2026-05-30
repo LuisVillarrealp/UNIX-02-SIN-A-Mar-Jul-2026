@@ -154,3 +154,24 @@ su root
 passwd sysadmin
 # exits the current root session.
 exit
+#Redirection
+# changes to the Documents directory inside the home folder.
+cd ~/Documents
+# displays the content of food.txt.
+cat food.txt
+# copies the content of food.txt into newfile1.txt.
+cat food.txt > newfile1.txt
+# displays the content of newfile1.txt.
+cat newfile1.txt
+# prints the text "Hello" to the terminal.
+echo "Hello"
+# displays the content of newfile1.txt.
+cat newfile1.txt
+# overwrites newfile1.txt with the text "I like food.".
+echo "I like food." > newfile1.txt
+# displays the updated content of newfile1.txt.
+cat newfile1.txt
+# appends the text "This food is good." to newfile1.txt.
+echo "This food is good." >> newfile1.txt
+# displays the final content of newfile1.txt.
+cat newfile1.txt
