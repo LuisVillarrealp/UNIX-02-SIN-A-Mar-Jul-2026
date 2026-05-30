@@ -143,3 +143,14 @@ sudo apt-get upgrade
 # apt-get purge [package]
 # removes the cowsay package and its configuration files.
 sudo apt-get purge cowsay
+#passwd command
+# changes the password of the current user.
+passwd
+# displays password status information for the sysadmin user.
+passwd -S sysadmin
+# switches to the root user account.
+su root
+# changes the password for the sysadmin user.(only with root)
+passwd sysadmin
+# exits the current root session.
+exit
