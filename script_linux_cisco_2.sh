@@ -117,3 +117,10 @@ ping -c 4 192.168.1.2
 ping -c 4 192.168.1.3
 # Exit the root user session.
 exit
+#ps commands
+# displays processes running in the current shell session.
+ps
+# displays all running processes on the system.
+ps -e
+# displays all running processes with full detailed information.
+ps -ef
