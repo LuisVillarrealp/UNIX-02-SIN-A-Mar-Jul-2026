@@ -108,3 +108,12 @@ date
 shutdown 01:51
 # schedules a system shutdown in 1 minute with a custom message.
 shutdown +1 "Goodbye World!"
+#ifconfig command
+# Display network interface configuration.
+ifconfig
+# Verify connectivity with a successful ping test.
+ping -c 4 192.168.1.2
+# Verify connectivity with an unsuccessful ping test (expected error).
+ping -c 4 192.168.1.3
+# Exit the root user session.
+exit
