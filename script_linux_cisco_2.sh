@@ -175,3 +175,14 @@ cat newfile1.txt
 echo "This food is good." >> newfile1.txt
 # displays the final content of newfile1.txt.
 cat newfile1.txt
+#Text Editor (vi/vim) ---
+# Open a file for editing using the vi editor.
+vi newfile.txt
+# Note on vi modes 
+# To enter Insert mode, use 'i' or 'a'.
+# To return to Command mode, press 'Esc'.
+# To enter Ex mode, press ':'.
+# Force quit the editor without saving changes.
+# :q!
+# Save and quit the editor.
+# :wq
