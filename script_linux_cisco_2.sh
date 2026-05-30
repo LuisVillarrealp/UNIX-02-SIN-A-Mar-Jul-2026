@@ -98,3 +98,13 @@ grep 'ee*' red.txt
 #grep 'red'
 # changes back to the home directory.
 cd ~
+# switches to the root user with a login shell.
+su -
+# shuts down the system immediately.
+shutdown now
+# displays the current system date and time.
+date
+# schedules a system shutdown at 01:51.
+shutdown 01:51
+# schedules a system shutdown in 1 minute with a custom message.
+shutdown +1 "Goodbye World!"
