@@ -124,3 +124,22 @@ ps
 ps -e
 # displays all running processes with full detailed information.
 ps -ef
+#apt/ apt-get command
+# updates the package list from configured repositories.
+sudo apt-get update
+# searches for packages related to the word "cow".
+apt-cache search cow
+# installs the cowsay package.
+sudo apt-get install cowsay
+# displays the message "NDG Linux Unhatched" using cowsay.
+cowsay 'NDG Linux Unhatched'
+# updates the package list again from repositories.
+sudo apt-get update
+# upgrades installed packages to newer versions.
+sudo apt-get upgrade
+# Syntax Reference: removes a package but keeps configuration files.
+# apt-get remove [package]
+# Syntax Reference: completely removes a package and its configuration files.
+# apt-get purge [package]
+# removes the cowsay package and its configuration files.
+sudo apt-get purge cowsay
