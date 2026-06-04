@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 PUBLISHER="No Starch Press"
 print_name(){
  local name
