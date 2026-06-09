@@ -26,4 +26,3 @@ cat << EOF
  Black Hat Bash
  by No Starch Press
 EOF
-ls -l / | grep "bin"
