@@ -165,10 +165,17 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
  && sed -i 's/# es_ES.UTF-8/es_ES.UTF-8/' /etc/locale.gen \
  && locale-gen \
  \
- # --- Limpieza final: reducir el tamaño de la imagen ---
- # apt deja archivos de caché que ya no necesitamos después de instalar.
- # Borrarlos aquí (en el mismo RUN) hace la capa final más pequeña.
- # Si los borráramos en otro RUN, seguirían ocupando en la capa anterior.
+ 
+# apt-get clean removes downloaded package files and rm -rf deletes
+# the package list cache. Both run inside this same RUN so the cleanup
+# is part of the same layer. A separate RUN would not help because the
+# files would still exist in the previous layer and waste space
+
+# What I understand: Docker takes a permanent snapshot at the end of
+# every step. If we clean up in a separate step, the previous snapshot
+# already saved the junk files forever. Doing install and cleanup in
+# the same step means the snapshot Docker takes is already clean,
+# keeping the final image as small as possible.
  && apt-get clean \
  && rm -rf /var/lib/apt/lists/*
 
