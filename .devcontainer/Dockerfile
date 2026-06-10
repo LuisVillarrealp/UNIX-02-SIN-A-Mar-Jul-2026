@@ -227,10 +227,28 @@ RUN git config --system --add safe.directory '*' \
 #to switch to it manually.
 RUN chsh -s /usr/bin/zsh root
 
-
+# A here-document (<<) is a way to pass multiple lines of text directly
+# into a command. Everything written between the two EOF markers is
+# treated as input, just like a file would be.
+# The ">>" appends those lines to .zshrc instead of overwriting it.
+# The single quotes around 'EOF' make bash write the text literally,
+# without expanding any variables inside the block.
+#
+# The PROMPT line sets how the terminal prompt looks:
+#   %F{cyan}...%f        prints text in cyan color
+#   [Luis-Villarreal🐺]  custom name shown on every prompt line
+#   %1~                  shows only the current folder name
+#   %(?.√.X %?)          shows a green checkmark if the last command
+#                        worked, or a red X with the error code if not
+#
+# What I understand: instead of running echo multiple times to add lines
+# to the config file, heredoc lets us write a whole block at once. The
+# result is a custom prompt that shows where we are and whether the
+# last command succeeded.
 RUN cat >> /root/.zshrc <<'EOF'
 PROMPT='%F{cyan}[Luis-Villarreal🐺]%f %F{yellow}%1~%f %(?.%F{green}√.%F{red}X %?)%f %# '
 EOF
+
 CMD ["/usr/bin/zsh"]
 
 
