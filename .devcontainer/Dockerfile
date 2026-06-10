@@ -41,13 +41,17 @@ ENV DEBIAN_FRONTEND=noninteractive \
     TERM=xterm-256color
 
 
-# ----------------------------------------------------------------------------
-# Pre-respuesta a una pregunta interactiva de Wireshark
-# ----------------------------------------------------------------------------
-# Wireshark/tshark PREGUNTA durante su instalación si los usuarios
-# normales (no-root) deben poder capturar paquetes. Como en el contenedor
-# siempre somos root, respondemos "false" POR ADELANTADO usando
-# debconf-set-selections para que no detenga el build esperando input.
+# debconf-set-selections pre-loads answers to package configuration
+# questions so installs never pause waiting for user input.
+# Wireshark asks during install whether non-root users can capture
+# packets, we answer false before the question is even asked.
+# The pipe "|" sends the output of echo as stdin to debconf-set-selections.
+#
+# What I understand: we use the pipe "|" to send our answer 
+# (like saying "false" to Wireshark) before the installer 
+# even has a chance to ask. By pre-loading the answer, the 
+# setup doesn't freeze waiting for a human to hit enter, 
+# allowing the build to finish completely on its own.
 RUN echo "wireshark-common wireshark-common/install-setuid boolean false" \
     | debconf-set-selections
 
