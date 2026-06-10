@@ -56,47 +56,55 @@ RUN echo "wireshark-common wireshark-common/install-setuid boolean false" \
     | debconf-set-selections
 
 
-# ----------------------------------------------------------------------------
-# RUN: ejecutar comandos durante la construcción de la imagen
-# ----------------------------------------------------------------------------
-# Aquí instalamos TODO el software del curso en un solo RUN.
+ 
+# RUN executes commands during the image build.
+# All course software is installed in one single RUN block because
+# every RUN creates a new image layer — fewer layers means a smaller
+# and faster image.
 #
-#   apt-get update          -> actualiza la lista de paquetes disponibles
-#   apt-get install         -> descarga e instala los paquetes listados
-#     -y                    -> responde "sí" automáticamente
-#     --no-install-recommends -> instala SOLO lo esencial (no los extras
-#                                sugeridos). Ahorra cientos de MB.
+#   apt-get update                 refreshes the package list
+#   apt-get install                downloads and installs packages
+#     -y                           answers yes to all prompts automatically
+#     --no-install-recommends      installs only required packages,
+#                                  skipping suggested extras to save space
 #
-# ¿Por qué un solo RUN gigante y no 10 RUN pequeños?
-# Porque CADA RUN crea una capa nueva en la imagen. Menos capas = imagen
-# más pequeña, más rápida de construir y de descargar.
+# "&&" is the logical AND operator: the next command only runs if the
+# previous one succeeded. If update fails, install never starts.
 #
-# El "&&" encadena comandos: ejecuta el siguiente SOLO SI el anterior
-# terminó bien. Si algo falla, el build se detiene con error (que es lo
-# que queremos: mejor un error claro que una imagen rota).
+# The trailing "\" continues the same instruction on the next line
+# for readability.
+#
+# Key tools installed and why:
+#   gawk / sed / grep    search, filter and transform text streams
+#   shellcheck           static linter that finds bugs in bash scripts
+#   nmap                 widely used port and network scanner
+#   tcpdump / tshark     capture and inspect network packets from the terminal
+#   tor / proxychains4   route traffic through anonymous proxy chains
+#   jq                   parse and query JSON from the command line
+#   man-db               restores the man command so we can look up commands
+#
+# What I understand: We group the update, installation, and 
+# cleanup into one single step. This helps Docker keeping the final image 
+# small and fast. We connect these steps using "&&" so that 
+# if any part fails, the whole build stops immediately to prevent 
+# a broken container. Within this step, we also grab essential 
+# tools—like "vim"or others so we have a 
+# quick way to easily read or edit files once the container is running.
 RUN apt-get update && apt-get install -y --no-install-recommends \
     \
-    # === Editores de texto y shells (intérpretes de comandos) ===
+    
     neovim \
     vim \
     zsh \
     bash-completion \
     \
-    # === Herramientas de 4ta generación ===
-    # Estas son las protagonistas de las Unidades 2, 3 y 4:
+  
     perl \
     make \
     gawk \
     sed \
     grep \
     \
-    # === Utilidades básicas de UNIX ===
-    # coreutils trae cat, ls, head, tail, sort, cut, tr, etc.
-    # findutils trae find y xargs.
-    # procps trae ps, top, kill (gestión de procesos).
-    # less = paginador para leer archivos largos.
-    # tree = muestra directorios como árbol.
-    # jq = procesa JSON desde la línea de comandos.
     coreutils \
     findutils \
     procps \
@@ -104,15 +112,11 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     tree \
     jq \
     \
-    # === Páginas de manual (comando `man`) ===
-    # La imagen base de Kali viene sin documentación para
-    # ahorrar espacio. La reinstalamos porque en el curso "man bash" o
-    # "man grep" es material de consulta obligada.
     man-db \
     manpages \
     manpages-posix \
     \
-    # === Red básica y utilidades de descarga ===
+
     curl \
     wget \
     git \
@@ -120,22 +124,18 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     ca-certificates \
     locales \
     \
-    # === Linter (revisor automático de errores) para scripts Bash ===
+
     shellcheck \
     \
-    # === Reconocimiento y escaneo de red ===
-    # nmap = el escáner de puertos más famoso.
-    # masscan = escaneo masivo de rangos grandes de IPs.
+
     nmap \
     masscan \
     \
-    # === Captura y análisis de paquetes de red ===
-    # tcpdump = capturador clásico por terminal.
-    # tshark = versión de terminal de Wireshark.
+
     tcpdump \
     tshark \
     \
-    # === Utilidades de red variadas ===
+
     netcat-traditional \
     socat \
     dnsutils \
@@ -146,17 +146,12 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     net-tools \
     iputils-ping \
     \
-    # === Anonimato: Tor y similares ===
-    # tor = cliente de la red Tor.
-    # torsocks = "envoltorio" que hace pasar cualquier comando por Tor.
-    # proxychains4 = encadena múltiples proxies.
-    # obfs4proxy = ofusca el tráfico de Tor para evadir bloqueos.
+
     tor \
     torsocks \
     proxychains4 \
     obfs4proxy \
     \
-    # === Cliente HTTP más legible que curl para aprender ===
     httpie \
     \
  # --- Después de instalar, activamos el idioma español ---
