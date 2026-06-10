@@ -1,3 +1,13 @@
+# Docker builds images by stacking one layer per instruction.
+# Each layer is cached, so unchanged instructions are reused on the
+# next build. This is why stable instructions go first and custom
+# config goes last.
+#
+# What I understand: putting stable things first means Docker reuses
+# cached layers and only rebuilds what actually changed. Which saves a 
+# lot of time by avoiding the need to repeat the entire 
+# configuration process every time.
+
 # FROM specifies the base image Docker pulls to start the build.
 # Every instruction below stacks on top of it. We use Kali Linux
 # rolling because it is always up to date and built for security work.
@@ -6,29 +16,24 @@
 #we use Kali because it is always updated and comes ready for security and penetration testing work.
 FROM kalilinux/kali-rolling:latest
 
-
-# ----------------------------------------------------------------------------
-# ENV: variables de entorno permanentes dentro del contenedor
-# ----------------------------------------------------------------------------
-# Las variables de entorno son "ajustes globales" que cualquier programa
-# del sistema puede leer. Se escriben en MAYÚSCULAS por convención.
+# ENV declares environment variables that persist inside the container.
+# Any program running inside can read them. The shell loads these on
+# every new session — running "env" in the terminal lists all of them.
 #
 #   DEBIAN_FRONTEND=noninteractive
-#     Le dice al instalador de paquetes (apt) "no me hagas preguntas
-#     interactivas, asume respuestas por defecto". Sin esto, algunos
-#     paquetes pausarían el build esperando que pulsemos una tecla y se
-#     quedaría colgado para siempre (porque no hay nadie mirando).
+#     Tells apt not to ask interactive questions during install.
+#     Without it the build would hang waiting for input that never comes.
 #
 #   LANG / LC_ALL=es_ES.UTF-8
-#     Configuran idioma y codificación de caracteres. UTF-8 es lo que
-#     permite que acentos, ñ, €, emojis, etc. se muestren bien.
+#     Set the language and character encoding so accents and special
+#     characters display correctly in the terminal.
 #
 #   TERM=xterm-256color
-#     Le indica a los programas que la terminal admite 256 colores, para
-#     que vim, nvim, htop, etc. se vean con todos sus colores.
-#
-# La barra invertida "\" al final de cada línea significa "esto continúa
-# en la línea siguiente". Solo es para legibilidad.
+#     Tells programs the terminal supports 256 colors so tools like
+#     vim and zsh themes render with full color.
+#What I understand: these are global settings that get loaded before anything runs, 
+#so every program inside the container already has access 
+#to them without needing to set them manually. 
 ENV DEBIAN_FRONTEND=noninteractive \
     LANG=es_ES.UTF-8 \
     LC_ALL=es_ES.UTF-8 \
