@@ -165,7 +165,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
  && sed -i 's/# es_ES.UTF-8/es_ES.UTF-8/' /etc/locale.gen \
  && locale-gen \
  \
- 
+
 # apt-get clean removes downloaded package files and rm -rf deletes
 # the package list cache. Both run inside this same RUN so the cleanup
 # is part of the same layer. A separate RUN would not help because the
@@ -180,12 +180,14 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
  && rm -rf /var/lib/apt/lists/*
 
 
-# ----------------------------------------------------------------------------
-# SHELL: qué intérprete usar en los siguientes RUN
-# ----------------------------------------------------------------------------
-# Por defecto Docker usa /bin/sh (un shell más limitado y antiguo). Lo
-# cambiamos a bash por si agregamos más instrucciones con sintaxis
-# moderna (arrays, [[ ]], etc.).
+# SHELL changes the interpreter Docker uses for all RUN instructions
+# that follow. The default is /bin/sh, a minimal POSIX shell.
+# Switching to bash or zsh makes later RUN steps run under the same shell
+# configured for the user.
+#
+# What I understand: we replace the default minimal shell with bash or zsh 
+# so the instructions that come after this run in the same environment
+# the user will actually work in.
 SHELL ["/bin/zsh", "-c"]
 
 
