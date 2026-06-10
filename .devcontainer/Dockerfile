@@ -191,12 +191,13 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 SHELL ["/bin/zsh", "-c"]
 
 
-# ----------------------------------------------------------------------------
-# WORKDIR: directorio de trabajo al entrar al contenedor
-# ----------------------------------------------------------------------------
-# Codespaces siempre monta el código del repositorio en
-# /workspaces/<nombre-del-repo>. Establecer /workspaces aquí hace que las
-# terminales se abran cerca de nuestros archivos del curso.
+# WORKDIR sets the working directory for all instructions that follow
+# and for the terminal when the container starts. Codespaces mounts
+# the repository under /workspaces so terminals open right next to
+# the course files.
+#
+# What I understand: it is like running cd once so every command after
+# this starts from the right folder automatically.
 WORKDIR /workspaces
 
 # Configuración de Git para el contenedor:
