@@ -17,8 +17,8 @@
 FROM kalilinux/kali-rolling:latest
 
 # ENV declares environment variables that persist inside the container.
-# Any program running inside can read them. The shell loads these on
-# every new session — running "env" in the terminal lists all of them.
+# Any program running inside can read them (Checking Environment Variables, BHB Ch.1).. The shell loads these on
+# every new session, running "env" in the terminal lists all of them.
 #
 #   DEBIAN_FRONTEND=noninteractive
 #     Tells apt not to ask interactive questions during install.
@@ -45,9 +45,9 @@ ENV DEBIAN_FRONTEND=noninteractive \
 # questions so installs never pause waiting for user input.
 # Wireshark asks during install whether non-root users can capture
 # packets, we answer false before the question is even asked.
-# The pipe "|" sends the output of echo as stdin to debconf-set-selections.
+# The pipe "|" sends the output of echo as stdin to debconf-set-selections.(pipes, BHB Ch.1)
 #
-# What I understand: we use the pipe "|" to send our answer 
+# What I understand: we use the pipe "|" to send our answer (Redirection Operators, BHB Ch.1).
 # (like saying "false" to Wireshark) before the installer 
 # even has a chance to ask. By pre-loading the answer, the 
 # setup doesn't freeze waiting for a human to hit enter, 
@@ -69,7 +69,7 @@ RUN echo "wireshark-common wireshark-common/install-setuid boolean false" \
 #                                  skipping suggested extras to save space
 #
 # "&&" is the logical AND operator: the next command only runs if the
-# previous one succeeded. If update fails, install never starts.
+# previous one succeeded.(Control Operators, BHB Ch.1). If update fails, install never starts.
 #
 # The trailing "\" continues the same instruction on the next line
 # for readability.
@@ -154,11 +154,12 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     \
     httpie \
     \
-# sed -i directly edits /etc/locale.gen, removing the comment
+
+    # sed -i directly edits /etc/locale.gen, removing the comment
 # symbol "#" from the es_ES.UTF-8 line to activate it.
 # locale-gen then reads that file and builds the language data
 # the system needs to show Spanish characters correctly.
-#
+# sed — edits the file in place to activate the locale (Editing Streams with sed, BHB Ch.2)
 # What I understand: the locale.gen file has many languages disabled
 # by default. We uncomment the Spanish one and then run locale-gen so
 # the system actually builds it and makes it ready to use.
@@ -220,7 +221,8 @@ RUN git config --system --add safe.directory '*' \
 
 # chsh -s changes the login shell for the specified user.
 # We set it to zsh for root so every new terminal session starts
-# in zsh instead of sh or bash.
+# in zsh instead of sh or bash. 
+# The shell is the command language interpreter that runs our commands (Accessing the Bash Shell, BHB Ch.1).
 
 # What I understand: we permanently change the default shell for root 
 #to zsh so it starts automatically on every new session instead of having 
@@ -228,9 +230,9 @@ RUN git config --system --add safe.directory '*' \
 RUN chsh -s /usr/bin/zsh root
 
 # A here-document (<<) is a way to pass multiple lines of text directly
-# into a command. Everything written between the two EOF markers is
+# into a command.(here-document redirection or redirection operators, BHB Ch.1). Everything written between the two EOF markers is
 # treated as input, just like a file would be.
-# The ">>" appends those lines to .zshrc instead of overwriting it.
+# The ">>" appends those lines to .zshrc instead of overwriting it. (append redirection, BHB Ch.1).
 # The single quotes around 'EOF' make bash write the text literally,
 # without expanding any variables inside the block.
 #
