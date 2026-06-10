@@ -154,9 +154,14 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     \
     httpie \
     \
- # --- Después de instalar, activamos el idioma español ---
- # sed busca "# es_ES.UTF-8" en /etc/locale.gen y le quita el "#" para
- # activar esa línea. Luego locale-gen compila los archivos de idioma.
+# sed -i directly edits /etc/locale.gen, removing the comment
+# symbol "#" from the es_ES.UTF-8 line to activate it.
+# locale-gen then reads that file and builds the language data
+# the system needs to show Spanish characters correctly.
+#
+# What I understand: the locale.gen file has many languages disabled
+# by default. We uncomment the Spanish one and then run locale-gen so
+# the system actually builds it and makes it ready to use.
  && sed -i 's/# es_ES.UTF-8/es_ES.UTF-8/' /etc/locale.gen \
  && locale-gen \
  \
