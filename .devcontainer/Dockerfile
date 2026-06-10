@@ -249,6 +249,16 @@ RUN cat >> /root/.zshrc <<'EOF'
 PROMPT='%F{cyan}[Luis-Villarreal🐺]%f %F{yellow}%1~%f %(?.%F{green}√.%F{red}X %?)%f %# '
 EOF
 
+# RUN executes commands while Docker is building the image, like
+# installing packages. CMD is different  it does not run during
+# the build, it runs when someone actually starts a container from
+# the finished image.
+# Codespaces overrides this with its own terminal, but having CMD
+# defined makes the image work with plain Docker too.
+#
+# What I understand: RUN builds the environment, CMD starts it.
+# Every time the container launches, this line is what kicks off
+# the interactive zsh session we configured throughout this file.
 CMD ["/usr/bin/zsh"]
 
 
