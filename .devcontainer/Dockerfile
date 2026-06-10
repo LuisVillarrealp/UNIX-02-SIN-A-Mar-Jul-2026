@@ -31,9 +31,10 @@ FROM kalilinux/kali-rolling:latest
 #   TERM=xterm-256color
 #     Tells programs the terminal supports 256 colors so tools like
 #     vim and zsh themes render with full color.
-#What I understand: these are global settings that get loaded before anything runs, 
-#so every program inside the container already has access 
-#to them without needing to set them manually. 
+# What I understand: these are global settings that get loaded before anything runs, 
+# so every program inside the container already has access 
+# to them without needing to set them manually.ensuring the environment is perfectly 
+# pre-configured for every task from the moment it starts. 
 ENV DEBIAN_FRONTEND=noninteractive \
     LANG=es_ES.UTF-8 \
     LC_ALL=es_ES.UTF-8 \
