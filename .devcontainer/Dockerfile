@@ -17,7 +17,7 @@
 FROM kalilinux/kali-rolling:latest
 
 # ENV declares environment variables that persist inside the container.
-# Any program running inside can read them (Checking Environment Variables, BHB Ch.1).. The shell loads these on
+# Any program running inside can read them (Checking Environment Variables, BHB Ch.1). The shell loads these on
 # every new session, running "env" in the terminal lists all of them.
 #
 #   DEBIAN_FRONTEND=noninteractive
@@ -92,19 +92,23 @@ RUN echo "wireshark-common wireshark-common/install-setuid boolean false" \
 # quick way to easily read or edit files once the container is running.
 RUN apt-get update && apt-get install -y --no-install-recommends \
     \
-    
+    # Text editors and shells: tools to write and edit files inside
+    # the container and to provide an interactive command environment
     neovim \
     vim \
     zsh \
     bash-completion \
     \
-  
+    # Text processing tools: used to search, filter and transform
+    # text streams and files from the command line
     perl \
     make \
     gawk \
     sed \
     grep \
     \
+    # Core UNIX utilities: essential commands like cat, ls, find,
+    # ps and sort that every Linux environment needs to function
     coreutils \
     findutils \
     procps \
@@ -112,11 +116,14 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     tree \
     jq \
     \
+    # Manual pages: documentation for every installed command,
+    # removed by default in Kali to save space so we reinstall it
     man-db \
     manpages \
     manpages-posix \
     \
-
+    # Network and download utilities: tools to fetch files, clone
+    # repositories and manage certificates over the network
     curl \
     wget \
     git \
@@ -124,18 +131,22 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     ca-certificates \
     locales \
     \
-
+    # Bash script linter: analyzes shell scripts and reports
+    # syntax errors and bad practices before running them
     shellcheck \
     \
-
+    # Network scanning: tools to discover open ports and map
+    # large ranges of IP addresses quickly
     nmap \
     masscan \
     \
-
+    # Packet capture: tools to intercept and inspect network
+    # traffic directly from the terminal
     tcpdump \
     tshark \
     \
-
+    # Miscellaneous network tools: utilities for DNS lookups,
+    # routing, interface management and connectivity testing
     netcat-traditional \
     socat \
     dnsutils \
@@ -146,12 +157,15 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     net-tools \
     iputils-ping \
     \
-
+    # Anonymity tools: route traffic through proxy chains and
+    # the Tor network to hide the origin of connections
     tor \
     torsocks \
     proxychains4 \
     obfs4proxy \
     \
+    # Readable HTTP client — sends HTTP requests and displays
+    # responses in a clean format, easier to read than curl
     httpie \
     \
 
