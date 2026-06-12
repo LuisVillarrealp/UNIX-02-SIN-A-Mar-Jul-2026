@@ -28,3 +28,12 @@ else
 echo "User is not root!"
 # ends the if statement.
 fi
+
+
+# creates a new user account named luna.
+# useradd luna
+# switches to the luna user and starts a login shell.
+# su - luna
+# see if the current user is root
+# whoami
+# bash check_root_function.sh
