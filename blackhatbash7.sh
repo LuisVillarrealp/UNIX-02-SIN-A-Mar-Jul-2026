@@ -14,3 +14,12 @@ awk '{print $1}' log.txt
 awk '{print $1,$2,$3}' log.txt
 awk '{print $2}' log.txt
 awk '{print $3}' log.txt
+# awk $NF
+awk '{print $1,$NF}' log.txt
+# csv
+touch example_csv.txt
+echo "hola1,chao1" > example_csv.txt
+echo "hola2,chao2" >> example_csv.txt
+echo "hola3,chao3" >> example_csv.txt
+#awk csv
+awk -F',' '{print $1}' example_csv.txt
