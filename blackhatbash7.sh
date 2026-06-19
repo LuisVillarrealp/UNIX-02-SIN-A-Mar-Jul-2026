@@ -47,3 +47,8 @@ cat newlog1.txt
 sed '10,8d' newlog1.txt
 #sed and print
 sed -n '10,15 p' log.txt
+#Managing the Background and Foreground
+sleep 300 &
+jobs
+fg %1
+bg %1
