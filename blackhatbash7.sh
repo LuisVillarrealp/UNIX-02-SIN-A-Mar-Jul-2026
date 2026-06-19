@@ -52,3 +52,9 @@ sleep 300 &
 jobs
 fg %1
 bg %1
+#nohup
+chmo u+x exercise_solution.sh
+nohup ./exercise_solution.sh 127.0.0.1 127.0.1.1 &
+nohup ./exercise_solution.sh mysite nostarch.com &
+ps aux | grep 11672 # Name of the process 
+ps -ef | grep exercise_solution.sh # Name of the file
