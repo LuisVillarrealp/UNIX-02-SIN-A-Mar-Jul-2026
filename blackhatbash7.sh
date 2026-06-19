@@ -31,6 +31,17 @@ grep "42.236.10.117" log.txt | awk '{print $7}'
 #sed
 sed 's/Mozilla/Godzilla/g' log.txt
 grep "Mozilla" log.txt
-grep "Godzilla" log.txt # no vale ya que no cambio solo mostro en pantalla 
+grep "Godzilla" log.txt # does not work because sed only shows in the terminal 
 sed 's/Mozilla/Godzilla/g' log.txt > newlog.txt
 grep "Godzilla" newlog.txt
+#sed and  delete
+sed '1d' newlog.txt #only shows in the terminal 
+sed -i '1d' newlog.txt
+cat newlog.txt
+git diff newlog.txt
+sed '$d' newlog.txt
+git diff newlog.txt
+git diff newlog.txt | tail
+sed 's/ //g' log.txt > newlog1.txt
+cat newlog1.txt
+sed '10,8d' newlog1.txt
