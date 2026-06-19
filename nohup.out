@@ -8,3 +8,5 @@ You must provide two arguments to this script.
 Example: ./exercise_solution.sh mysite nostarch.com
 You must provide two arguments to this script.
 Example: ./exercise_solution.sh mysite nostarch.com
+./exercise_solution.sh: línea 32: 00: orden no encontrada
+./exercise_solution.sh: línea 32: e: orden no encontrada
