@@ -45,3 +45,5 @@ git diff newlog.txt | tail
 sed 's/ //g' log.txt > newlog1.txt
 cat newlog1.txt
 sed '10,8d' newlog1.txt
+#sed and print
+sed -n '10,15 p' log.txt
